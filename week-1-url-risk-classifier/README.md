@@ -26,3 +26,16 @@ node monday-keyword-detector.js
 - Weighted scoring so high risk keywords score higher than others
 - Regex patterns to catch variations like "l0gin" or "verif-y"
 - Integration with URLScan.io API to go beyond keyword matching
+
+
+### tuesday-url-filter.js
+Batch scans a list of URLs using array methods, separates 
+results into risk groups, and produces a triage report 
+sorted by threat severity.
+
+## T&S Use Case
+First signal layer in a phishing detection system targeting 
+deployment abuse patterns on hosting platforms like Vercel.
+
+## How To Run
+```bash
