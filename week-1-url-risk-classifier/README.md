@@ -39,6 +39,5 @@ deployment abuse patterns on hosting platforms like Vercel.
 
 ## How To Run
 ```bash
-node monday-keyword-detector.js
 node tuesday-url-filter.js
 ```
