@@ -1,22 +1,48 @@
-# ts-engineering-projects
+# T&S Engineering Projects
 
-Trust and Safety tooling I'm building while learning 
-T&S engineering fundamentals.
+Trust and Safety tooling built while learning T&S 
+engineering fundamentals.
 
-Focus: Infrastructure abuse detection, phishing detection, 
-deployment risk scoring.
+**Goal:** Entry level T&S Engineering role at an 
+infrastructure company like Vercel.
 
-Stack: JavaScript, Node.js, Express, React
+**Focus:** Infrastructure abuse detection, phishing 
+detection, deployment risk scoring.
+
+**Stack:** JavaScript, Node.js, Express, React
 
 ---
 
 ## Projects
 
-### Week 1 — URL Risk Classifier
-Detects suspicious URLs based on keyword signals.
+### ✅ Week 1 — URL Risk Classifier
+A complete phishing detection pipeline that scans URLs 
+for suspicious signals, assigns weighted risk scores, 
+builds structured case files, and produces prioritized 
+triage reports.
 
-### Week 2 — Deployment Scanner (coming soon)
+Built with: JavaScript, Node.js
+Concepts: keyword detection, weighted scoring, batch 
+processing, object modeling, error handling
 
-### Week 3 — Threat Signal Aggregator (coming soon)
+### 🔄 Week 2 — Deployment Scanner (in progress)
+Connects the Week 1 detection engine to real APIs —
+URLScan.io and Google Safe Browsing — to scan actual
+deployed URLs against live threat databases.
 
-### Week 4 — Phishing Detector (coming soon)
+### ⬜ Week 3 — Threat Signal Aggregator (coming soon)
+
+### ⬜ Week 4 — Phishing Detector (coming soon)
+
+---
+
+## Why I'm Building This
+
+Vercel and similar infrastructure platforms face constant 
+abuse from bad actors deploying phishing pages, malware, 
+and credential harvesting sites on their infrastructure. 
+T&S engineers build the systems that detect and stop this.
+
+These projects simulate that exact work — starting with 
+core detection logic and building toward a full multi-signal 
+detection platform connected to real threat intelligence APIs.
