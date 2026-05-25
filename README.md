@@ -46,3 +46,14 @@ T&S engineers build the systems that detect and stop this.
 These projects simulate that exact work — starting with 
 core detection logic and building toward a full multi-signal 
 detection platform connected to real threat intelligence APIs.
+
+### ✅ Week 2 — Deployment Scanner
+A multi-signal URL scanner combining URLScan.io, Google Safe 
+Browsing, and keyword analysis. Detected 4 real active threats 
+during development including phishing and social engineering 
+attacks deployed on Vercel infrastructure.
+
+Built with: JavaScript, Node.js, URLScan.io API, 
+Google Safe Browsing API
+Concepts: async/await, Promise.all, API integration, 
+multi-signal fusion, environment variables
