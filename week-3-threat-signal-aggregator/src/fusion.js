@@ -23,7 +23,7 @@ function calculateVerdict(score) {
   return "CLEAN";
 }
 
-export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, velocitySignal) {
+export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, velocitySignal, domainAgeSignal) {
   let combinedScore = 0;
   let firedSignals = [];
 
@@ -49,6 +49,12 @@ export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, vel
     combinedScore += contribution;
     firedSignals.push(`velocity(+${contribution})`);
   }
+  
+  if (domainAgeSignal && !domainAgeSignal.error && domainAgeSignal.score > 0) {
+    const contribution = Math.round(domainAgeSignal.score * SIGNAL_WEIGHTS.domainAgeScore);
+    combinedScore += contribution;
+    firedSignals.push(`domain_age(+${contribution})`);
+  }
 
   if (googleSignal.threat) {
     combinedScore += SIGNAL_WEIGHTS.googleThreat;
@@ -70,6 +76,7 @@ export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, vel
       urlscan: urlscanSignal,
       google: googleSignal,
       velocity: velocitySignal ?? null,
+      domainAge: domainAgeSignal ?? null,
     },
     scannedAt: new Date().toISOString(),
   };

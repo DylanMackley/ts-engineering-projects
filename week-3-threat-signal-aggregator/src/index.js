@@ -16,6 +16,7 @@ import { collectKeywordSignal } from "./signals/keywords.js";
 import { collectURLScanSignal } from "./signals/urlscan.js";
 import { collectGoogleSignal } from "./signals/google.js";
 import { checkVelocity } from "./signals/velocity.js";
+import { checkDomainAge }  from "./signals/domainAge.js";
 import { fuseSignals, buildErrorCase } from "./fusion.js";
 import { printReport, printProgress } from "./reporter.js";
 import { RATE_LIMITS } from "./config.js";
@@ -52,14 +53,15 @@ async function scanURL(url) {
   const keywordSignal = collectKeywordSignal(url);
 
   // Collect API signals simultaneously
-  const [urlscanSignal, googleSignal, velocitySignal] = await Promise.all([
+  const [urlscanSignal, googleSignal, velocitySignal, domainAgeSignal] = await Promise.all([
   collectURLScanSignal(validation.hostname),
   collectGoogleSignal(url),
   checkVelocity(url),
+  checkDomainAge(url),
 ]);
 
   // Fuse all signals into one verdict
-  return fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, velocitySignal);
+  return fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, velocitySignal, domainAgeSignal);
 }
 
 // ============================================
