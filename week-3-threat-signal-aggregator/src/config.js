@@ -36,6 +36,7 @@ export const SIGNAL_WEIGHTS = {
   urlscanMalicious: 45,
   urlscanScore: 0.3,
   keywordScore: 1,
+  velocityScore: 0.2,
 };
 
 // ============================================
@@ -81,6 +82,7 @@ export const RATE_LIMITS = {
 export const API_ENDPOINTS = {
   urlscanSearch: "https://urlscan.io/api/v1/search",
   urlscanResult: "https://urlscan.io/api/v1/result",
+  urlscanVelocity: "https://urlscan.io/api/v1/search",
   googleSafeBrowsing:
     "https://safebrowsing.googleapis.com/v4/threatMatches:find",
 };
