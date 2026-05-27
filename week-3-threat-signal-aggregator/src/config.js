@@ -38,6 +38,7 @@ export const SIGNAL_WEIGHTS = {
   keywordScore: 1,
   velocityScore: 0.2,
   domainAgeScore: 0.25,
+  sslAgeScore: 0.25,
 };
 
 // ============================================

@@ -23,7 +23,7 @@ function calculateVerdict(score) {
   return "CLEAN";
 }
 
-export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, velocitySignal, domainAgeSignal) {
+export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, velocitySignal, domainAgeSignal, sslAgeSignal) {
   let combinedScore = 0;
   let firedSignals = [];
 
@@ -56,6 +56,16 @@ export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, vel
     firedSignals.push(`domain_age(+${contribution})`);
   }
 
+  // SSL cert age contribution
+  // Only contributes when at least one other signal has already fired
+  // Prevents fresh certs on legitimate Vercel deployments from false-flagging
+
+  if (sslAgeSignal && !sslAgeSignal.error && sslAgeSignal.score > 0 && firedSignals.length > 0) {
+    const contribution = Math.round(sslAgeSignal.score * SIGNAL_WEIGHTS.sslAgeScore);
+    combinedScore += contribution;
+    firedSignals.push(`ssl_age(+${contribution})`);
+  }
+
   if (googleSignal.threat) {
     combinedScore += SIGNAL_WEIGHTS.googleThreat;
     firedSignals.push(`google_threat(+${SIGNAL_WEIGHTS.googleThreat})`);
@@ -77,6 +87,7 @@ export function fuseSignals(url, keywordSignal, urlscanSignal, googleSignal, vel
       google: googleSignal,
       velocity: velocitySignal ?? null,
       domainAge: domainAgeSignal ?? null,
+      sslAge:    sslAgeSignal    ?? null,
     },
     scannedAt: new Date().toISOString(),
   };
