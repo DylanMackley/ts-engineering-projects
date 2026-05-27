@@ -1,0 +1,459 @@
+{
+  "meta": {
+    "tool": "Threat Signal Aggregator",
+    "version": "3.0",
+    "generatedAt": "2026-05-27T20:01:01.960Z",
+    "totalScanned": 8,
+    "flagRate": "50.0%"
+  },
+  "summary": {
+    "high": 1,
+    "medium": 3,
+    "low": 2,
+    "clean": 2,
+    "errors": 0
+  },
+  "signals": [
+    "keywords",
+    "urlscan",
+    "google",
+    "velocity",
+    "domainAge",
+    "sslAge"
+  ],
+  "cases": [
+    {
+      "caseId": "CASE-1779912042741-516",
+      "url": "https://htyd.vercel.app/",
+      "verdict": "HIGH",
+      "action": "AUTO TAKEDOWN",
+      "combinedScore": 84,
+      "firedSignals": [
+        "urlscan_malicious(+45)",
+        "urlscan_score(+30)",
+        "velocity(+9)"
+      ],
+      "scannedAt": "2026-05-27T20:00:42.741Z",
+      "signals": {
+        "keywords": {
+          "score": 0,
+          "matched": []
+        },
+        "urlscan": {
+          "malicious": true,
+          "score": 100
+        },
+        "google": {
+          "threat": false,
+          "threatType": null
+        },
+        "velocity": {
+          "score": 45,
+          "verdict": "medium",
+          "counts": {
+            "24h": 1,
+            "7d": 10,
+            "30d": 10,
+            "total": 10
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 0,
+          "verdict": "error",
+          "ageDays": null,
+          "notBefore": null,
+          "issuer": null,
+          "error": true
+        }
+      }
+    },
+    {
+      "caseId": "CASE-1779912048835-221",
+      "url": "https://interac-online.vercel.app/",
+      "verdict": "MEDIUM",
+      "action": "ESCALATE TO HUMAN REVIEW",
+      "combinedScore": 69,
+      "firedSignals": [
+        "velocity(+19)",
+        "google_threat(+50)"
+      ],
+      "scannedAt": "2026-05-27T20:00:48.835Z",
+      "signals": {
+        "keywords": {
+          "score": 0,
+          "matched": []
+        },
+        "urlscan": {
+          "malicious": false,
+          "score": 0
+        },
+        "google": {
+          "threat": true,
+          "threatType": "SOCIAL_ENGINEERING"
+        },
+        "velocity": {
+          "score": 95,
+          "verdict": "critical",
+          "counts": {
+            "24h": 27,
+            "7d": 100,
+            "30d": 100,
+            "total": 100
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 0,
+          "verdict": "error",
+          "ageDays": null,
+          "notBefore": null,
+          "issuer": null,
+          "error": true
+        }
+      }
+    },
+    {
+      "caseId": "CASE-1779912052610-553",
+      "url": "https://bank-sco.vercel.app/",
+      "verdict": "MEDIUM",
+      "action": "ESCALATE TO HUMAN REVIEW",
+      "combinedScore": 69,
+      "firedSignals": [
+        "velocity(+19)",
+        "google_threat(+50)"
+      ],
+      "scannedAt": "2026-05-27T20:00:52.610Z",
+      "signals": {
+        "keywords": {
+          "score": 0,
+          "matched": []
+        },
+        "urlscan": {
+          "malicious": false,
+          "score": 0
+        },
+        "google": {
+          "threat": true,
+          "threatType": "SOCIAL_ENGINEERING"
+        },
+        "velocity": {
+          "score": 95,
+          "verdict": "critical",
+          "counts": {
+            "24h": 28,
+            "7d": 100,
+            "30d": 100,
+            "total": 100
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 0,
+          "verdict": "error",
+          "ageDays": null,
+          "notBefore": null,
+          "issuer": null,
+          "error": true
+        }
+      }
+    },
+    {
+      "caseId": "CASE-1779912045889-783",
+      "url": "https://instagrmm.vercel.app/",
+      "verdict": "MEDIUM",
+      "action": "ESCALATE TO HUMAN REVIEW",
+      "combinedScore": 59,
+      "firedSignals": [
+        "velocity(+9)",
+        "google_threat(+50)"
+      ],
+      "scannedAt": "2026-05-27T20:00:45.889Z",
+      "signals": {
+        "keywords": {
+          "score": 0,
+          "matched": []
+        },
+        "urlscan": {
+          "malicious": false,
+          "score": 0
+        },
+        "google": {
+          "threat": true,
+          "threatType": "SOCIAL_ENGINEERING"
+        },
+        "velocity": {
+          "score": 45,
+          "verdict": "medium",
+          "counts": {
+            "24h": 2,
+            "7d": 15,
+            "30d": 15,
+            "total": 15
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 0,
+          "verdict": "error",
+          "ageDays": null,
+          "notBefore": null,
+          "issuer": null,
+          "error": true
+        }
+      }
+    },
+    {
+      "caseId": "CASE-1779912055005-259",
+      "url": "https://secure-login-verify.vercel.app/",
+      "verdict": "LOW",
+      "action": "MONITOR",
+      "combinedScore": 38,
+      "firedSignals": [
+        "keywords(+28)",
+        "ssl_age(+10)"
+      ],
+      "scannedAt": "2026-05-27T20:00:55.005Z",
+      "signals": {
+        "keywords": {
+          "score": 28,
+          "matched": [
+            {
+              "keyword": "login",
+              "points": 10
+            },
+            {
+              "keyword": "verify",
+              "points": 10
+            },
+            {
+              "keyword": "secure",
+              "points": 8
+            }
+          ]
+        },
+        "urlscan": {
+          "malicious": false,
+          "score": 0
+        },
+        "google": {
+          "threat": false,
+          "threatType": null
+        },
+        "velocity": {
+          "score": 0,
+          "verdict": "clean",
+          "counts": {
+            "24h": 0,
+            "7d": 0,
+            "30d": 0,
+            "total": 0
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 40,
+          "verdict": "medium",
+          "ageDays": 29,
+          "notBefore": "Apr 28 02:04:43 2026 GMT",
+          "issuer": "Google Trust Services",
+          "error": false
+        }
+      }
+    },
+    {
+      "caseId": "CASE-1779912057790-88",
+      "url": "https://paypal-password-reset-account.vercel.app/",
+      "verdict": "LOW",
+      "action": "MONITOR",
+      "combinedScore": 33,
+      "firedSignals": [
+        "keywords(+23)",
+        "ssl_age(+10)"
+      ],
+      "scannedAt": "2026-05-27T20:00:57.790Z",
+      "signals": {
+        "keywords": {
+          "score": 23,
+          "matched": [
+            {
+              "keyword": "account",
+              "points": 8
+            },
+            {
+              "keyword": "password",
+              "points": 15
+            }
+          ]
+        },
+        "urlscan": {
+          "malicious": false,
+          "score": 0
+        },
+        "google": {
+          "threat": false,
+          "threatType": null
+        },
+        "velocity": {
+          "score": 0,
+          "verdict": "clean",
+          "counts": {
+            "24h": 0,
+            "7d": 0,
+            "30d": 0,
+            "total": 0
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 40,
+          "verdict": "medium",
+          "ageDays": 29,
+          "notBefore": "Apr 28 02:04:43 2026 GMT",
+          "issuer": "Google Trust Services",
+          "error": false
+        }
+      }
+    },
+    {
+      "caseId": "CASE-1779912059818-58",
+      "url": "https://my-portfolio.vercel.app/",
+      "verdict": "CLEAN",
+      "action": "CLEAR",
+      "combinedScore": 0,
+      "firedSignals": [],
+      "scannedAt": "2026-05-27T20:00:59.818Z",
+      "signals": {
+        "keywords": {
+          "score": 0,
+          "matched": []
+        },
+        "urlscan": {
+          "malicious": false,
+          "score": 0
+        },
+        "google": {
+          "threat": false,
+          "threatType": null
+        },
+        "velocity": {
+          "score": 0,
+          "verdict": "clean",
+          "counts": {
+            "24h": 0,
+            "7d": 0,
+            "30d": 0,
+            "total": 0
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 40,
+          "verdict": "medium",
+          "ageDays": 29,
+          "notBefore": "Apr 28 02:04:43 2026 GMT",
+          "issuer": "Google Trust Services",
+          "error": false
+        }
+      }
+    },
+    {
+      "caseId": "CASE-1779912061957-607",
+      "url": "https://johns-design-studio.vercel.app/",
+      "verdict": "CLEAN",
+      "action": "CLEAR",
+      "combinedScore": 0,
+      "firedSignals": [],
+      "scannedAt": "2026-05-27T20:01:01.957Z",
+      "signals": {
+        "keywords": {
+          "score": 0,
+          "matched": []
+        },
+        "urlscan": {
+          "malicious": false,
+          "score": 0
+        },
+        "google": {
+          "threat": false,
+          "threatType": null
+        },
+        "velocity": {
+          "score": 0,
+          "verdict": "clean",
+          "counts": {
+            "24h": 0,
+            "7d": 0,
+            "30d": 0,
+            "total": 0
+          },
+          "error": false
+        },
+        "domainAge": {
+          "score": 0,
+          "verdict": "clean",
+          "ageDays": 2311,
+          "registrationDate": "2020-01-28T03:03:04.240Z",
+          "error": false
+        },
+        "sslAge": {
+          "score": 40,
+          "verdict": "medium",
+          "ageDays": 29,
+          "notBefore": "Apr 28 02:04:43 2026 GMT",
+          "issuer": "Google Trust Services",
+          "error": false
+        }
+      }
+    }
+  ]
+}
