@@ -4,7 +4,7 @@ Self-taught T&S tooling built while learning security engineering fundamentals f
 
 **Goal:** Entry-level T&S Engineering role at an infrastructure company like Vercel  
 **Focus:** Infrastructure abuse detection, phishing detection, deployment risk scoring  
-**Stack:** JavaScript, Node.js, Express, React
+**Stack:** JavaScript, Node.js, React
 
 ---
 
@@ -63,8 +63,6 @@ A 6-signal threat detection system with modular ES6 architecture. Each signal ru
 | `sslAge` | Node `tls` handshake | Fresh SSL certs on subdomains = new deployment |
 
 #### System Architecture
-
-```
 index.js          ← orchestrator, runs the pipeline
 ├── validators.js ← URL validation before hitting APIs
 ├── config.js     ← all weights, thresholds, endpoints
@@ -77,49 +75,79 @@ index.js          ← orchestrator, runs the pipeline
 │   └── sslAge.js     ← TLS handshake cert inspection
 ├── fusion.js     ← weighted score aggregation + override rules
 └── reporter.js   ← terminal output + JSON file export
-```
 
 #### How Fusion Works
 
 All 6 signals run concurrently via `Promise.all`. Each contributes a weighted score to a combined total. Override rules can escalate verdicts independent of score — a confirmed Google Safe Browsing hit always floors at HIGH regardless of other signals. If a signal errors, its weight is redistributed and the system continues in degraded mode.
-
-```
 Combined Score → Verdict
 70+  → HIGH   (AUTO TAKEDOWN)
 40+  → MEDIUM (ESCALATE TO HUMAN REVIEW)
 10+  → LOW    (MONITOR)
 0    → CLEAN  (CLEAR)
-```
 
 #### Key Engineering Decisions
 
-**Velocity gates on corroboration** — the SSL cert age signal only contributes when at least one other signal has already fired. This prevents fresh Vercel certs on legitimate deployments from generating false positives. Vercel rotates certs frequently — SSL age alone is not sufficient signal.
+**SSL age gates on corroboration** — the SSL cert age signal only contributes when at least one other signal has already fired. This prevents fresh Vercel certs on legitimate deployments from generating false positives. Vercel rotates certs frequently — SSL age alone is not sufficient signal.
 
 **Domain age uses apex domain** — RDAP only accepts registered domains, not subdomains. `htyd.vercel.app` queries `vercel.app`, which was registered in 2020. This is a known limitation: subdomain abuse on aged infrastructure defeats domain age signals entirely. SSL cert age was built specifically to address this gap.
 
 **Signals never throw** — every signal returns a structured error object on failure rather than throwing. Fusion checks `signal.error` and excludes that signal from the weighted average. The system always produces a verdict even with partial signal data.
 
 #### Sample Output
-
-```
 🔴 #1 [HIGH] https://htyd.vercel.app/
-   Score:    84
-   Action:   AUTO TAKEDOWN
-   Signals:  urlscan_malicious(+45), urlscan_score(+30), velocity(+9)
-   Velocity: 10 scans/7d (medium)
-
+Score:    84
+Action:   AUTO TAKEDOWN
+Signals:  urlscan_malicious(+45), urlscan_score(+30), velocity(+9)
+Velocity: 10 scans/7d (medium)
 🟡 #2 [MEDIUM] https://interac-online.vercel.app/
-   Score:    69
-   Action:   ESCALATE TO HUMAN REVIEW
-   Signals:  velocity(+19), google_threat(+50)
-   Velocity: 100 scans/7d (critical)
-
+Score:    69
+Action:   ESCALATE TO HUMAN REVIEW
+Signals:  velocity(+19), google_threat(+50)
+Velocity: 100 scans/7d (critical)
 📄 JSON report saved → reports/report-2026-05-27T20-01-01.json
-```
 
 ---
 
-### ⬜ Week 4 — Phishing Detector (coming soon)
+### ✅ Week 4 — Phishing Detector
+
+Content-based phishing detection that goes beyond URL analysis. Fetches live page HTML and runs 4 independent analyzers to detect credential harvesting, brand impersonation, and malicious form behavior — catching phishing pages that are too new to appear in any blocklist.
+
+**Built with:** JavaScript, Node.js, node-html-parser, React  
+**Concepts:** HTTP content fetching, DOM analysis, brand similarity detection, credential pattern matching, React dashboard
+
+#### Analyzer Architecture
+
+| Analyzer | What It Detects |
+|---|---|
+| `forms` | Forms submitting to external domains, hidden field exfiltration |
+| `brands` | Brand names appearing on wrong domains (PayPal on non-paypal.com) |
+| `credentials` | Password fields, SIN, CVV, card numbers on same page |
+| `title` | Page titles impersonating known brands |
+
+#### Real Detections
+🟡 https://paypal-secure-login.vercel.app/  — Score 68
+Form submits to evil-collector.com
+Brand "paypal" on wrong domain
+Password field + credential keywords detected
+Title impersonates PayPal
+🟡 https://interac-verify-account.vercel.app/  — Score 55
+CRITICAL: Password and credit card fields on same page
+SIN, CVV, card number fields detected
+Brand "interac" on wrong domain
+Title impersonates Interac
+
+#### Dashboard
+
+A React triage dashboard visualizes scan results with per-case signal breakdowns and a side-by-side signal matrix. Built directly from the JSON reports the CLI produces.
+week-4-phishing-detector/
+├── src/
+│   ├── analyzers/    ← forms, brands, credentials, title
+│   ├── fetcher.js    ← HTML fetcher with timeout + size limit
+│   ├── fusion.js     ← weighted analyzer score aggregation
+│   ├── reporter.js   ← terminal output + JSON export
+│   └── index.js      ← orchestrator
+└── dashboard/
+└── TSDashboard.jsx  ← React triage dashboard
 
 ---
 
@@ -139,22 +167,21 @@ This mirrors how production T&S systems work: no single signal is trusted absolu
 ## Running the System
 
 ```bash
-# Clone the repo
 git clone https://github.com/DylanMackley/ts-engineering-projects.git
-cd ts-engineering-projects/week-3-threat-signal-aggregator
 
-# Install dependencies
+# Week 3 — Threat Signal Aggregator (6 signals, requires API keys)
+cd week-3-threat-signal-aggregator
 npm install
+cp .env.example .env   # add URLScan.io + Google Safe Browsing keys
+node src/index.js
 
-# Add API keys
-cp .env.example .env
-# Edit .env with your URLScan.io and Google Safe Browsing keys
-
-# Run
+# Week 4 — Phishing Detector (content analysis, no API keys needed)
+cd week-4-phishing-detector
+npm install
 node src/index.js
 ```
 
-API keys required:
+API keys required for Week 3:
 - URLScan.io — free at https://urlscan.io/user/signup
 - Google Safe Browsing — free at https://developers.google.com/safe-browsing
 
