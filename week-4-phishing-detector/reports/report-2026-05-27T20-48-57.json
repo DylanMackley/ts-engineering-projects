@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "tool": "Phishing Detector",
+    "version": "4.0",
+    "generatedAt": "2026-05-27T20:48:57.008Z"
+  },
+  "summary": {
+    "total": 8,
+    "high": 0,
+    "medium": 0,
+    "low": 1,
+    "clean": 0,
+    "errors": 7,
+    "flagRate": "0.0%"
+  },
+  "cases": [
+    {
+      "caseId": "CASE-1779914935785-896",
+      "url": "https://my-portfolio.vercel.app/",
+      "combinedScore": 20,
+      "verdict": "LOW",
+      "action": "MONITOR",
+      "firedSignals": [
+        "forms(+5)",
+        "brands(+15)"
+      ],
+      "signalCount": 2,
+      "analyzers": {
+        "forms": {
+          "analyzer": "forms",
+          "score": 15,
+          "verdict": "low",
+          "findings": [
+            "Form has no action attribute — submits to current page"
+          ],
+          "formCount": 1,
+          "error": false
+        },
+        "brands": {
+          "analyzer": "brands",
+          "score": 50,
+          "verdict": "medium",
+          "findings": [
+            "Brand \"interac\" detected on page but domain is \"my-portfolio.vercel.app\" not \"interac.ca\""
+          ],
+          "impersonated": [
+            "interac"
+          ],
+          "error": false
+        },
+        "credentials": {
+          "analyzer": "credentials",
+          "score": 0,
+          "verdict": "clean",
+          "findings": [
+            "No credential harvesting patterns detected"
+          ],
+          "passwordFields": 0,
+          "suspiciousInputs": 0,
+          "error": false
+        },
+        "title": {
+          "analyzer": "title",
+          "score": 0,
+          "verdict": "clean",
+          "findings": [
+            "Title \"Matthew Waddell's Portfolio\" — no suspicious patterns detected"
+          ],
+          "title": "Matthew Waddell's Portfolio",
+          "error": false
+        }
+      },
+      "scannedAt": "2026-05-27T20:48:55.785Z"
+    },
+    {
+      "caseId": "CASE-1779914928593-303",
+      "url": "https://htyd.vercel.app/",
+      "combinedScore": 0,
+      "verdict": "ERROR",
+      "action": "INVALID INPUT",
+      "firedSignals": [],
+      "signalCount": 0,
+      "error": "fetch failed",
+      "analyzers": null,
+      "scannedAt": "2026-05-27T20:48:48.593Z"
+    },
+    {
+      "caseId": "CASE-1779914929750-615",
+      "url": "https://instagrmm.vercel.app/",
+      "combinedScore": 0,
+      "verdict": "ERROR",
+      "action": "INVALID INPUT",
+      "firedSignals": [],
+      "signalCount": 0,
+      "error": "fetch failed",
+      "analyzers": null,
+      "scannedAt": "2026-05-27T20:48:49.750Z"
+    },
+    {
+      "caseId": "CASE-1779914930892-190",
+      "url": "https://interac-online.vercel.app/",
+      "combinedScore": 0,
+      "verdict": "ERROR",
+      "action": "INVALID INPUT",
+      "firedSignals": [],
+      "signalCount": 0,
+      "error": "fetch failed",
+      "analyzers": null,
+      "scannedAt": "2026-05-27T20:48:50.892Z"
+    },
+    {
+      "caseId": "CASE-1779914932136-20",
+      "url": "https://bank-sco.vercel.app/",
+      "combinedScore": 0,
+      "verdict": "ERROR",
+      "action": "INVALID INPUT",
+      "firedSignals": [],
+      "signalCount": 0,
+      "error": "fetch failed",
+      "analyzers": null,
+      "scannedAt": "2026-05-27T20:48:52.136Z"
+    },
+    {
+      "caseId": "CASE-1779914933370-617",
+      "url": "https://secure-login-verify.vercel.app/",
+      "combinedScore": 0,
+      "verdict": "ERROR",
+      "action": "INVALID INPUT",
+      "firedSignals": [],
+      "signalCount": 0,
+      "error": "HTTP 404 — Not Found",
+      "analyzers": null,
+      "scannedAt": "2026-05-27T20:48:53.370Z"
+    },
+    {
+      "caseId": "CASE-1779914934583-520",
+      "url": "https://paypal-password-reset-account.vercel.app/",
+      "combinedScore": 0,
+      "verdict": "ERROR",
+      "action": "INVALID INPUT",
+      "firedSignals": [],
+      "signalCount": 0,
+      "error": "HTTP 404 — Not Found",
+      "analyzers": null,
+      "scannedAt": "2026-05-27T20:48:54.583Z"
+    },
+    {
+      "caseId": "CASE-1779914937007-522",
+      "url": "https://johns-design-studio.vercel.app/",
+      "combinedScore": 0,
+      "verdict": "ERROR",
+      "action": "INVALID INPUT",
+      "firedSignals": [],
+      "signalCount": 0,
+      "error": "HTTP 404 — Not Found",
+      "analyzers": null,
+      "scannedAt": "2026-05-27T20:48:57.007Z"
+    }
+  ]
+}

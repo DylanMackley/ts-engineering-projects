@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "tool": "Phishing Detector",
+    "version": "4.0",
+    "generatedAt": "2026-05-27T20:51:09.663Z"
+  },
+  "summary": {
+    "total": 4,
+    "high": 0,
+    "medium": 2,
+    "low": 1,
+    "clean": 1,
+    "errors": 0,
+    "flagRate": "50.0%"
+  },
+  "cases": [
+    {
+      "caseId": "CASE-1779915067921-290",
+      "url": "https://paypal-secure-login.vercel.app/",
+      "combinedScore": 68,
+      "verdict": "MEDIUM",
+      "action": "ESCALATE TO HUMAN REVIEW",
+      "firedSignals": [
+        "forms(+31)",
+        "brands(+15)",
+        "credentials(+11)",
+        "title(+11)"
+      ],
+      "signalCount": 4,
+      "analyzers": {
+        "forms": {
+          "analyzer": "forms",
+          "score": 90,
+          "verdict": "high",
+          "findings": [
+            "Form submits to external domain: evil-collector.com (page is paypal-secure-login.vercel.app)",
+            "Form uses POST method — action: \"https://evil-collector.com/steal\"",
+            "Form contains 4 hidden fields — possible data exfiltration"
+          ],
+          "formCount": 1,
+          "error": false
+        },
+        "brands": {
+          "analyzer": "brands",
+          "score": 50,
+          "verdict": "medium",
+          "findings": [
+            "Brand \"paypal\" detected on page but domain is \"paypal-secure-login.vercel.app\" not \"paypal.com\""
+          ],
+          "impersonated": [
+            "paypal"
+          ],
+          "error": false
+        },
+        "credentials": {
+          "analyzer": "credentials",
+          "score": 55,
+          "verdict": "medium",
+          "findings": [
+            "1 password input field(s) detected",
+            "Credential keyword \"password\" found in input field \"password\""
+          ],
+          "passwordFields": 1,
+          "suspiciousInputs": 1,
+          "error": false
+        },
+        "title": {
+          "analyzer": "title",
+          "score": 70,
+          "verdict": "high",
+          "findings": [
+            "Title \"PayPal - Log in to your account\" references brand \"paypal\" but domain is \"paypal-secure-login.vercel.app\"",
+            "Title contains suspicious word: \"log in\""
+          ],
+          "title": "PayPal - Log in to your account",
+          "error": false
+        }
+      },
+      "scannedAt": "2026-05-27T20:51:07.921Z"
+    },
+    {
+      "caseId": "CASE-1779915068431-428",
+      "url": "https://interac-verify-account.vercel.app/",
+      "combinedScore": 55,
+      "verdict": "MEDIUM",
+      "action": "ESCALATE TO HUMAN REVIEW",
+      "firedSignals": [
+        "forms(+9)",
+        "brands(+15)",
+        "credentials(+20)",
+        "title(+11)"
+      ],
+      "signalCount": 4,
+      "analyzers": {
+        "forms": {
+          "analyzer": "forms",
+          "score": 25,
+          "verdict": "low",
+          "findings": [
+            "Form uses POST method — action: \"self\"",
+            "Form has no action attribute — submits to current page"
+          ],
+          "formCount": 1,
+          "error": false
+        },
+        "brands": {
+          "analyzer": "brands",
+          "score": 50,
+          "verdict": "medium",
+          "findings": [
+            "Brand \"interac\" detected on page but domain is \"interac-verify-account.vercel.app\" not \"interac.ca\""
+          ],
+          "impersonated": [
+            "interac"
+          ],
+          "error": false
+        },
+        "credentials": {
+          "analyzer": "credentials",
+          "score": 100,
+          "verdict": "high",
+          "findings": [
+            "1 password input field(s) detected",
+            "Credential keyword \"sin\" found in input field \"sin\"",
+            "Credential keyword \"card number\" found in input field \"card\"",
+            "Credential keyword \"cvv\" found in input field \"cvv\"",
+            "Credential keyword \"password\" found in input field \"password\"",
+            "1 credit card input field(s) detected",
+            "CRITICAL: Password and credit card fields on same page"
+          ],
+          "passwordFields": 1,
+          "suspiciousInputs": 4,
+          "error": false
+        },
+        "title": {
+          "analyzer": "title",
+          "score": 70,
+          "verdict": "high",
+          "findings": [
+            "Title \"Interac - Verify your account\" references brand \"interac\" but domain is \"interac-verify-account.vercel.app\"",
+            "Title contains suspicious word: \"verify\""
+          ],
+          "title": "Interac - Verify your account",
+          "error": false
+        }
+      },
+      "scannedAt": "2026-05-27T20:51:08.431Z"
+    },
+    {
+      "caseId": "CASE-1779915069662-908",
+      "url": "https://my-portfolio.vercel.app/",
+      "combinedScore": 20,
+      "verdict": "LOW",
+      "action": "MONITOR",
+      "firedSignals": [
+        "forms(+5)",
+        "brands(+15)"
+      ],
+      "signalCount": 2,
+      "analyzers": {
+        "forms": {
+          "analyzer": "forms",
+          "score": 15,
+          "verdict": "low",
+          "findings": [
+            "Form has no action attribute — submits to current page"
+          ],
+          "formCount": 1,
+          "error": false
+        },
+        "brands": {
+          "analyzer": "brands",
+          "score": 50,
+          "verdict": "medium",
+          "findings": [
+            "Brand \"interac\" detected on page but domain is \"my-portfolio.vercel.app\" not \"interac.ca\""
+          ],
+          "impersonated": [
+            "interac"
+          ],
+          "error": false
+        },
+        "credentials": {
+          "analyzer": "credentials",
+          "score": 0,
+          "verdict": "clean",
+          "findings": [
+            "No credential harvesting patterns detected"
+          ],
+          "passwordFields": 0,
+          "suspiciousInputs": 0,
+          "error": false
+        },
+        "title": {
+          "analyzer": "title",
+          "score": 0,
+          "verdict": "clean",
+          "findings": [
+            "Title \"Matthew Waddell's Portfolio\" — no suspicious patterns detected"
+          ],
+          "title": "Matthew Waddell's Portfolio",
+          "error": false
+        }
+      },
+      "scannedAt": "2026-05-27T20:51:09.662Z"
+    },
+    {
+      "caseId": "CASE-1779915068947-958",
+      "url": "https://jane-smith-portfolio.vercel.app/",
+      "combinedScore": 9,
+      "verdict": "CLEAN",
+      "action": "CLEAR",
+      "firedSignals": [
+        "forms(+9)"
+      ],
+      "signalCount": 1,
+      "analyzers": {
+        "forms": {
+          "analyzer": "forms",
+          "score": 25,
+          "verdict": "low",
+          "findings": [
+            "Form uses POST method — action: \"self\"",
+            "Form has no action attribute — submits to current page"
+          ],
+          "formCount": 1,
+          "error": false
+        },
+        "brands": {
+          "analyzer": "brands",
+          "score": 0,
+          "verdict": "clean",
+          "findings": [
+            "No brand impersonation detected"
+          ],
+          "impersonated": [],
+          "error": false
+        },
+        "credentials": {
+          "analyzer": "credentials",
+          "score": 0,
+          "verdict": "clean",
+          "findings": [
+            "No credential harvesting patterns detected"
+          ],
+          "passwordFields": 0,
+          "suspiciousInputs": 0,
+          "error": false
+        },
+        "title": {
+          "analyzer": "title",
+          "score": 0,
+          "verdict": "clean",
+          "findings": [
+            "Title \"Jane Smith — Frontend Developer\" — no suspicious patterns detected"
+          ],
+          "title": "Jane Smith — Frontend Developer",
+          "error": false
+        }
+      },
+      "scannedAt": "2026-05-27T20:51:08.947Z"
+    }
+  ]
+}
