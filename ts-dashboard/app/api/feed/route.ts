@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const apiKey = process.env.URLSCAN_API_KEY || "019e5b52-36d0-72fb-b8fc-af2cbb3693de";
+    const apiKey = process.env.URLSCAN_API_KEY;
 
     if (!apiKey) {
       return NextResponse.json(
